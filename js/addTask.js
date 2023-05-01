@@ -1,16 +1,27 @@
 import { createEl, localObj, form } from "./help.js";
 import { deleteTask, createRemoveBtn } from "./RemoveTaskbtn.js";
+import { editTaskBtn } from "./editTaskBtn.js";
 
 export function createTask() {
   const div = createEl("div", "list");
   const formData = new FormData(form);
+  console.log(formData);
   for (const [key, value] of formData.entries()) {
     if (value.trim().length > 0) {
-      const input = createEl("input", key, value);
-      input.setAttribute('value', value)
+      const divTaskWrap = createEl('div', 'task-wrapper');
+      const divBtnsWrap = createEl('div', 'btns-wrapper');
+      const p = createEl('p', 'input', value);
+      const checkBox = createEl('input', 'checkbox');
+      checkBox.type = 'checkbox'
       const removeBtn = createRemoveBtn(div);
-      div.append(input);
-      div.append(removeBtn);
+      const editBtn = editTaskBtn(p);
+
+      divBtnsWrap.append(editBtn);
+      divBtnsWrap.append(removeBtn);
+      divTaskWrap.append(checkBox);
+      divTaskWrap.append(p);
+      div.append(divTaskWrap);
+      div.append(divBtnsWrap);
     }
   }
   if (div.children.length > 0) {

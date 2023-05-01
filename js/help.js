@@ -12,6 +12,10 @@ function createForm() {
   input.name = "taskInput";
   const submitBtn = createEl("button", "submitBtn", "Добавить");
 
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
+  })
+
   toDoLabel.append(input);
   form.append(toDoLabel);
   form.append(submitBtn);
