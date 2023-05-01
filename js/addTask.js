@@ -6,9 +6,10 @@ export function createTask() {
   const formData = new FormData(form);
   for (const [key, value] of formData.entries()) {
     if (value.trim().length > 0) {
-      const span = createEl("span", key, value);
+      const input = createEl("input", key, value);
+      input.setAttribute('value', value)
       const removeBtn = createRemoveBtn(div);
-      div.append(span);
+      div.append(input);
       div.append(removeBtn);
     }
   }
