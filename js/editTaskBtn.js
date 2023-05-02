@@ -1,11 +1,15 @@
 import { createEl } from "./help.js";
-import { saveTaskBtn } from "./saveTaskBtn.js";
 
-export function editTaskBtn(p) {
-   const btn = createEl('button', 'edit-task-btn', 'Edit task');
-   btn.addEventListener('click', () => {
-      p.setAttribute('contenteditable', 'true');
-   })
+
+export function editTaskBtn() {
+   const btn = createEl('button', 'edit', 'Edit task');
 
    return btn
+}
+
+export function editFunc(div) {
+   div.querySelector('.save').classList.remove('hidden');
+
+   const p = div.querySelector('p')
+   p.setAttribute('contenteditable', 'true');
 }

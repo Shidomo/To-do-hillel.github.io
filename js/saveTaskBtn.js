@@ -1,12 +1,21 @@
-import { createEl } from "./help.js"
+import { createEl, localObj } from "./help.js"
 
-export function saveTaskBtn(p) {
-   const btn = createEl('button', 'save-task-btn', 'Save task');
-
-   btn.addEventListener('click', () => {
-      p.setAttribute('contenteditable', 'true');
-   })
-
-
+export function saveTaskBtn() {
+   const btn = createEl('button', 'save', 'Save task');
+   btn.classList.add('hidden');
    return btn
+}
+
+export function saveTaksFunc(div) {
+   div.querySelector('.save').classList.add('hidden');
+
+   console.log(div.innerHTML)
+   localObj.forEach(element => {
+      console.log(element)
+   });
+
+
+
+
+
 }
