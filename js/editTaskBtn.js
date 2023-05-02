@@ -1,15 +1,14 @@
-import { createEl } from "./help.js";
-
+import { createEl } from "./form.js";
 
 export function editTaskBtn() {
-   const btn = createEl('button', 'edit', 'Edit task');
+  const btn = createEl("button", "edit", "Edit task");
 
-   return btn
+  return btn;
 }
 
 export function editFunc(div) {
-   div.querySelector('.save').classList.remove('hidden');
+  div.querySelector(".save").classList.remove("hidden");
 
-   const p = div.querySelector('p')
-   p.setAttribute('contenteditable', 'true');
+  const p = div.querySelector("p");
+  p.setAttribute("contenteditable", "true");
 }

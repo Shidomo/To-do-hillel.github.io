@@ -1,3 +1,5 @@
+import { createTask } from "./addTask.js";
+
 export function createEl(tag, className, text) {
   const el = document.createElement(tag);
   if (className) el.className = className;
@@ -12,11 +14,6 @@ function createForm() {
   input.name = "taskInput";
   const submitBtn = createEl("button", "submitBtn", "Добавить");
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault()
-  })
-
-
   toDoLabel.append(input);
   form.append(toDoLabel);
   form.append(submitBtn);
@@ -26,4 +23,10 @@ function createForm() {
 createForm();
 
 export const localObj = JSON.parse(localStorage.getItem("object")) || [];
-export const form = document.querySelector("form");
+
+function setupForm() {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", createTask);
+}
+
+setupForm();
