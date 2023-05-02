@@ -1,5 +1,5 @@
 // Импорт необходимых функций из других файлов
-import { createEl } from "./form.js";
+import { createEl, localObj } from "./form.js";
 import { addTaskToList } from "./addTask.js";
 import { createRemoveBtn } from "./RemoveTaskbtn.js";
 import { editTaskBtn } from "./editTaskBtn.js";
@@ -38,6 +38,20 @@ function loadTasks() {
 
       div.append(divTaskWrap);
       div.append(divBtnsWrap);
+
+      checkBox.addEventListener("change", function () {
+        const storedObj = JSON.parse(localStorage.getItem("object"));
+        // console.log(index);
+        taskObj.checkbox;
+        console.log(taskObj.checkbox);
+        if (checkBox.checked) {
+          p.style.textDecoration = "line-through";
+        } else {
+          p.style.textDecoration = "none";
+        }
+
+        localStorage.setItem("object", JSON.stringify(localObj));
+      });
 
       // Добавление созданной задачи в список задач на странице
       addTaskToList(div, taskObj.id);
