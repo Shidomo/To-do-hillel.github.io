@@ -23,7 +23,7 @@ function loadTasks() {
 
       const checkBox = createEl("input", "checkbox");
       checkBox.type = "checkbox";
-      checkBox.checked = taskObj.checkBox;
+      checkBox.setAttribute("checked", taskObj.checkBox);
 
       const removeBtn = createRemoveBtn();
       const editBtn = editTaskBtn();
@@ -39,58 +39,29 @@ function loadTasks() {
       div.append(divTaskWrap);
       div.append(divBtnsWrap);
 
-      checkBox.addEventListener("click", function () {
+      checkBox.addEventListener("change", function () {
         const div = document.querySelector(`[data-id="${taskObj.id}"]`);
-        console.log(div);
         const p = div.querySelector(`p.input`);
         const checkBox = div.querySelector("input");
         console.log(localObj);
 
         localObj.forEach((element) => {
           console.log(element);
-          if (checkBox.checked) {
-            if (element.id === taskObj.id) {
+
+          if (element.id === taskObj.id) {
+            if (checkBox.getAttribute("checked", true)) {
               p.style.textDecoration = "line-through";
               element.checkbox = true;
             }
-          } else {
-            p.style.textDecoration = "none";
-            element.checkbox = false;
+            if (!checkBox.getAttribute("checked", false)) {
+              p.style.textDecoration = "none";
+              element.checkbox = false;
+            }
           }
         });
 
-        if (element.checkbox) {
-          //p-стили
-        } else {
-        }
-        // taskObj.checkbox;
-        // console.log(taskObj.checkbox);
-        // if (checkBox.checked) {
-        //   localObj.checkbox;
-        //   p.style.textDecoration = "line-through";
-        // } else {
-        //   p.style.textDecoration = "none";
-        // }
-
         localStorage.setItem("object", JSON.stringify(localObj));
       });
-
-      // export function saveTaksFunc(id) {
-      //   const div = document.querySelector(`[data-id="${id}"]`);
-      //   const p = div.querySelector(`p.input`);
-      //   const btnSave = div.querySelector("input");
-
-      //   localObj.forEach((element) => {
-      //     console.log(element);
-      //     if (element.id === id) {
-      //       element.p = p.textContent;
-      //     }
-      //   });
-
-      //   localStorage.setItem("object", JSON.stringify(localObj));
-      //   p.removeAttribute("contenteditable");
-      //   btnSave.classList.add("hidden");
-      // }
 
       // Добавление созданной задачи в список задач на странице
       addTaskToList(div, taskObj.id);
