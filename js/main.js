@@ -23,7 +23,17 @@ function loadTasks() {
 
       const checkBox = createEl("input", "checkbox");
       checkBox.type = "checkbox";
-      checkBox.setAttribute("checked", taskObj.checkBox);
+
+      checkBox.setAttribute('data-checked', taskObj.checkbox);
+
+      if (checkBox.dataset.checked === 'true') {
+        p.style.textDecoration = "line-through";
+        checkBox.setAttribute('checked', ' ')
+      }
+      else {
+        p.style.textDecoration = "none";
+        checkBox.removeAttribute('checked')
+      }
 
       const removeBtn = createRemoveBtn();
       const editBtn = editTaskBtn();
@@ -47,15 +57,15 @@ function loadTasks() {
 
         localObj.forEach((element) => {
           console.log(element);
-
           if (element.id === taskObj.id) {
-            if (checkBox.getAttribute("checked", true)) {
+            if (element.checkbox === false) {
               p.style.textDecoration = "line-through";
-              element.checkbox = true;
-            }
-            if (!checkBox.getAttribute("checked", false)) {
+              checkBox.setAttribute('checked', ' ')
+              element.checkbox = true
+            } else {
               p.style.textDecoration = "none";
-              element.checkbox = false;
+              checkBox.removeAttribute('checked')
+              element.checkbox = false
             }
           }
         });
