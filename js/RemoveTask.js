@@ -1,13 +1,7 @@
-import { createEl, localObj } from "./form.js";
-export function createRemoveBtn() {
-  const removeBtn = createEl("button", "remove", "Delete task");
-
-  return removeBtn;
-}
+import { localObj } from "./CreatePrevForm.js";
 
 export function deleteTask(id) {
   const index = localObj.findIndex((obj) => obj.id === id);
-
   const div = document.querySelector(`[data-id="${id}"]`);
   div.remove();
 
