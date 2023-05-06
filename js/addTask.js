@@ -3,6 +3,7 @@ import { localObj } from "./CreatePrevForm.js";
 import { deleteTask } from "./RemoveTask.js";
 import { editFunc } from "./editTask.js";
 import { saveTaksFunc } from "./saveTask.js";
+import { handleCheckBoxChange } from "./checkBox.js";
 
 export function createTask() {
   let taskObj = {}; // создал пустой объект из которого я беру id
