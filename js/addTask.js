@@ -8,6 +8,8 @@ export function createTask() {
   let taskObj = {}; // создал пустой объект из которого я беру id
 
   const div = createEl("div", "list");
+  div.setAttribute("data-id", taskObj.id); // задаем атрибут data-id со значением id объекта
+
   const divTaskWrap = createEl("div", "task-wrapper");
   const divBtnsWrap = createEl("div", "btns-wrapper");
 
