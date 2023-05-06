@@ -1,17 +1,15 @@
-import { localObj } from "./form.js";
+import { localObj } from "./CreatePrevForm.js";
 
-export function handleCheckBoxChange(taskObj) {
-  const div = document.querySelector(`[data-id="${taskObj.id}"]`);
+export function handleCheckBoxChange(id) {
+  const div = document.querySelector(`[data-id="${id}"]`);
   const p = div.querySelector(`p.input`);
   const checkBox = div.querySelector("input");
-  console.log(localObj);
 
   localObj.forEach((element) => {
-    console.log(element);
-    if (element.id === taskObj.id) {
+    if (element.id === id) {
       if (element.checkbox === false) {
         p.style.textDecoration = "line-through";
-        checkBox.setAttribute("checked", " ");
+        checkBox.setAttribute("checked", null);
         element.checkbox = true;
       } else {
         p.style.textDecoration = "none";

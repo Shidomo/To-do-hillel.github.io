@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  justify-content: space-between;
+  max-width: 450px;
+}
+
+.task-wrapper {
+  display: flex;
+}
+
+.btns-wrapper {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
