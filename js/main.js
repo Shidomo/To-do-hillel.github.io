@@ -1,9 +1,10 @@
 // Импорт необходимых функций из других файлов
-import { createEl } from "./form.js";
+import { createEl, localObj } from "./form.js";
 import { addTaskToList } from "./addTask.js";
 import { createRemoveBtn } from "./RemoveTaskbtn.js";
 import { editTaskBtn } from "./editTaskBtn.js";
 import { saveTaskBtn } from "./saveTaskBtn.js";
+import { handleCheckBoxChange } from "./checkBox.js";
 
 // Функция загрузки задач из localStorage
 function loadTasks() {
@@ -23,7 +24,16 @@ function loadTasks() {
 
       const checkBox = createEl("input", "checkbox");
       checkBox.type = "checkbox";
-      checkBox.checked = taskObj.checkBox;
+
+      checkBox.setAttribute("data-checked", taskObj.checkbox);
+
+      if (checkBox.dataset.checked === "true") {
+        p.style.textDecoration = "line-through";
+        checkBox.setAttribute("checked", " ");
+      } else {
+        p.style.textDecoration = "none";
+        checkBox.removeAttribute("checked");
+      }
 
       const removeBtn = createRemoveBtn();
       const editBtn = editTaskBtn();
@@ -38,6 +48,10 @@ function loadTasks() {
 
       div.append(divTaskWrap);
       div.append(divBtnsWrap);
+
+      checkBox.addEventListener("change", function () {
+        handleCheckBoxChange(taskObj, localObj);
+      });
 
       // Добавление созданной задачи в список задач на странице
       addTaskToList(div, taskObj.id);

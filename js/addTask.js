@@ -33,6 +33,17 @@ export function createTask() {
       p: p.textContent, // задаем текст задачи
     };
   }
+  // checkBox.addEventListener("change", function () {
+  //   console.log("Checkbox state changed");
+  //   taskObj.checkbox = checkBox.checked;
+  //   if (checkBox.checked) {
+  //     p.style.textDecoration = "line-through";
+  //   } else {
+  //     p.style.textDecoration = "none";
+  //   }
+
+  //   localStorage.setItem("object", JSON.stringify(localObj));
+  // });
 
   localObj.push(taskObj); // добавляем объект задачи в локалку
   localStorage.setItem("object", JSON.stringify(localObj)); // сохраняем локальку
