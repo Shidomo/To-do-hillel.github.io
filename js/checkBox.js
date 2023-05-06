@@ -1,7 +1,4 @@
-// import { createTask } from "./addTask";
 import { localObj } from "./form.js";
-console.log(localObj);
-// console.log(taskObj);
 
 export function handleCheckBoxChange(taskObj) {
   const div = document.querySelector(`[data-id="${taskObj.id}"]`);

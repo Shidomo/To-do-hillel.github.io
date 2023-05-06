@@ -49,10 +49,9 @@ function loadTasks() {
       div.append(divTaskWrap);
       div.append(divBtnsWrap);
 
-      checkBox.addEventListener("change", function () {
+      checkBox.addEventListener("change", () => {
         handleCheckBoxChange(taskObj, localObj);
       });
-
       // Добавление созданной задачи в список задач на странице
       addTaskToList(div, taskObj.id);
     });
