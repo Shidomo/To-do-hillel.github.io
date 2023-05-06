@@ -4,6 +4,7 @@ import { addTaskToList } from "./addTask.js";
 import { createRemoveBtn } from "./RemoveTaskbtn.js";
 import { editTaskBtn } from "./editTaskBtn.js";
 import { saveTaskBtn } from "./saveTaskBtn.js";
+import { handleCheckBoxChange } from "./checkBox.js";
 
 // Функция загрузки задач из localStorage
 function loadTasks() {
@@ -24,15 +25,14 @@ function loadTasks() {
       const checkBox = createEl("input", "checkbox");
       checkBox.type = "checkbox";
 
-      checkBox.setAttribute('data-checked', taskObj.checkbox);
+      checkBox.setAttribute("data-checked", taskObj.checkbox);
 
-      if (checkBox.dataset.checked === 'true') {
+      if (checkBox.dataset.checked === "true") {
         p.style.textDecoration = "line-through";
-        checkBox.setAttribute('checked', ' ')
-      }
-      else {
+        checkBox.setAttribute("checked", " ");
+      } else {
         p.style.textDecoration = "none";
-        checkBox.removeAttribute('checked')
+        checkBox.removeAttribute("checked");
       }
 
       const removeBtn = createRemoveBtn();
@@ -50,27 +50,7 @@ function loadTasks() {
       div.append(divBtnsWrap);
 
       checkBox.addEventListener("change", function () {
-        const div = document.querySelector(`[data-id="${taskObj.id}"]`);
-        const p = div.querySelector(`p.input`);
-        const checkBox = div.querySelector("input");
-        console.log(localObj);
-
-        localObj.forEach((element) => {
-          console.log(element);
-          if (element.id === taskObj.id) {
-            if (element.checkbox === false) {
-              p.style.textDecoration = "line-through";
-              checkBox.setAttribute('checked', ' ')
-              element.checkbox = true
-            } else {
-              p.style.textDecoration = "none";
-              checkBox.removeAttribute('checked')
-              element.checkbox = false
-            }
-          }
-        });
-
-        localStorage.setItem("object", JSON.stringify(localObj));
+        handleCheckBoxChange(taskObj, localObj);
       });
 
       // Добавление созданной задачи в список задач на странице
