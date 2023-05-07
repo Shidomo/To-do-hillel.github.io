@@ -20,9 +20,9 @@ export function createTask() {
 
   if (inputValue.trim().length > 0) {
     p.textContent = inputValue;
-    const removeBtn = createEl("button", "remove", "Delete task");
-    const editBtn = createEl("button", "edit", "Edit task");
-    const saveBtn = createEl("button", "save", "Save task");
+    const removeBtn = createEl("button", "remove", "");
+    const editBtn = createEl("button", "edit", "");
+    const saveBtn = createEl("button", "save", "Save");
     saveBtn.classList.add("hidden");
 
     divBtnsWrap.append(saveBtn, editBtn, removeBtn);

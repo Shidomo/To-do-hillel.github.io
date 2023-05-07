@@ -12,9 +12,9 @@ const loadTasks = () => {
       const divBtnsWrap = createEl("div", "btns-wrapper");
       const p = createEl("p", "input", taskObj.p);
       const checkBox = createEl("input", "checkbox");
-      const removeBtn = createEl("button", "remove", "Delete task");
-      const editBtn = createEl("button", "edit", "Edit task");
-      const saveBtn = createEl("button", "save", "Save task");
+      const removeBtn = createEl("button", "remove", "");
+      const editBtn = createEl("button", "edit", "");
+      const saveBtn = createEl("button", "save", "Save");
 
       saveBtn.classList.add("hidden");
       checkBox.type = "checkbox";
