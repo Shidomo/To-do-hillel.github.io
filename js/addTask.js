@@ -37,9 +37,8 @@ export function createTask() {
     localObj.push(taskObj); // добавляем объект задачи в локалку
     localStorage.setItem("object", JSON.stringify(localObj)); // сохраняем локальку
     addTaskToList(div, taskObj.id); // добавляем задачу в список задач с id
-  }else{
-    
   }
+  
 }
 
 export function addTaskToList(div, id) {
