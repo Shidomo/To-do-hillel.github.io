@@ -17,7 +17,17 @@ const createForm = () => {
 
 const setupForm = () => {
   const form = document.querySelector("form");
-  form.addEventListener("submit", createTask);
+  const input = form.querySelector('input')
+  //Старе рішення
+  // form.addEventListener("submit",createTask);
+  //Нове рішення
+  form.addEventListener("submit",(e) => {
+    if(input.value){
+      createTask()
+    }else{
+      e.preventDefault()
+    }
+  });
 };
 
 createForm();
