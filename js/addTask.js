@@ -28,9 +28,11 @@ export function createTask() {
     divBtnsWrap.append(saveBtn, editBtn, removeBtn);
     divTaskWrap.append(checkBox, p);
     div.append(divTaskWrap, divBtnsWrap);
+    const id = Date.now();
+    div.setAttribute("data-id", id);
 
     taskObj = {
-      id: Date.now(), // задаем уникальный идентификатор
+      id, // задаем уникальный идентификатор
       checkbox: checkBox.checked, // задаем состояние чекбокса
       p: p.textContent, // задаем текст задачи
     };
@@ -38,7 +40,6 @@ export function createTask() {
     localStorage.setItem("object", JSON.stringify(localObj)); // сохраняем локальку
     addTaskToList(div, taskObj.id); // добавляем задачу в список задач с id
   }
-  
 }
 
 export function addTaskToList(div, id) {
